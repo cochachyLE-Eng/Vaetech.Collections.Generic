@@ -1,6 +1,6 @@
 ﻿﻿# Vaetech.Collections.Generic
 
-[![Join the chat at (https://badges.gitter.im/Vaetech-PowerShell)](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Vaetech-PowerShell/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Join the chat at (https://badges.gitter.im/Vaetech-Collections-Generic)](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im//Vaetech-Collections-Generic/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 |    Package    |Latest Release|
 |:--------------|:------------:|
@@ -12,8 +12,7 @@
 
 ## What is Vaetech.Collections.Generic?
 
-Vaetech.Collections.Generic is a C# library which may be used for running commands with lambda expressions and getting data from PowerShell, in
-.Net Framework, .Net Standard and .Net Core
+Vaetech.Collections.Generic is a C# library which may be used for ... 
 
 ## License Information
 
@@ -76,85 +75,48 @@ Once you've opened the appropriate Vaetech.Collections.Generic solution file in 
 you can choose the **Debug** or **Release** build configuration and then build.
 
 Both Visual Studio 2017 and Visual Studio 2019 should be able to build Vaetech.Collections.Generic without any issues, but older versions such as
-Visual Studio 2015 will require modifications to the projects in order to build correctly. It has been reported that adding
-NuGet package references to 
-
-[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) (>= 13.0.1)
-[System.ComponentModel](https://www.nuget.org/packages/System.ComponentModel/) (>= 4.3.0)
-[System.ComponentModel.Annotations](https://www.nuget.org/packages/System.ComponentModel.Annotations/) (>= 5.0.0)
-[Vaetech.Data.ContentResult](https://www.nuget.org/packages/Vaetech.Data.ContentResult/) (>= 1.6.6)
-[Vaetech.Runtime.Utils](https://www.nuget.org/packages/Vaetech.Runtime.Utils/) (>= 1.0.3)
-
-will allow Vaetech.Collections.Generic to build successfully.
+Visual Studio 2015 will require modifications to the projects in order to build correctly.
 
 ## Using Vaetech.Collections.Generic
 
 ### How can it be used?
 
-It only takes a few lines of code to run PowerShell commands with lambda expressions.
+It only takes a few lines of code to convert collections to ArrayList<TKey,TValue>.
 
 ```csharp
-// Gets the processes that are running on the local computer.
-var getProcessResponse = PShell.GetProcess("svchost").WhereObject(c => c.StartTime > DateTime.Now.AddDays(-5)).FormatList(x => new { x.Name, x.Id, x.StartTime });
-// Get Command
-string command = getProcessResponse.GetCommand();
+// Paramters
+Request request = new Request();
+request.AddParameter("key", "key...");
+request.AddParameter("x-amz-credential", "x-amz-credential...");
+request.AddParameter("x-amz-algorithm", "x-amz-algorithm...");
+request.AddParameter("x-amz-date", "x-amz-date...");
+request.AddParameter("x-amz-signature", "x-amz-signature...");
+request.AddParameter("policy", "policy...");
+request.AddParameter("acl", "acl...");
+request.AddParameter("Content-Type", "Content-Type...");
+request.AddParameter("success_action_status", "success_action_status...");
+
+// Convert List<Parameter> to ArrayList<TKey,TValue>.
+var result = request.Parameters.ToArrayList(k => k.Name, v => v.Value);
+
+var key = result["key"].Value1;
+var x_amz_credential = result["x-amz-credential"].Value1;
+var x_amz_algorithm = result["x-amz-algorithm"].Value1;
+var x_amz_date = result["x-amz-date"].Value1;
+var x_amz_signature = result["x-amz-signature"].Value1;
+var policy = result["policy"].Value1;
+var acl = result["acl"].Value1;
+var content_Type = result["Content-Type"].Value1;
+var success_action_status = result["success_action_status"].Value1;
+
+Assert.AreEqual(key, request.Parameters.Where(c => c.Name == "key").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_credential, request.Parameters.Where(c => c.Name == "x-amz-credential").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_algorithm, request.Parameters.Where(c => c.Name == "x-amz-algorithm").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_date, request.Parameters.Where(c => c.Name == "x-amz-date").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_signature, request.Parameters.Where(c => c.Name == "x-amz-signature").FirstOrDefault().Value);
+Assert.AreEqual(policy, request.Parameters.Where(c => c.Name == "policy").FirstOrDefault().Value);
+Assert.AreEqual(acl, request.Parameters.Where(c => c.Name == "acl").FirstOrDefault().Value);
+Assert.AreEqual(content_Type, request.Parameters.Where(c => c.Name == "Content-Type").FirstOrDefault().Value);
+Assert.AreEqual(success_action_status, request.Parameters.Where(c => c.Name == "success_action_status").FirstOrDefault().Value);
 ```
 
-Get results with ErrorAction in custom collection
-
-```csharp
-// Gets the processes running on the local computer, in custom collection.
-var getProcessResponse = PShell.GetProcess(ErrorAction.SilentlyContinue,"svchost", "w3wp").SelectObject(x => new { x.Name, x.Id, x.StartTime }).WhereObject(c => c.StartTime.Date > DateTime.Now.AddDays(-24).Date).ConvertToJson();
-// Get Command
-string command = getProcessResponse.GetCommand();
-```
-
-Get results by date range
-
-```csharp
-// Gets the processes running on the local computer by date range, in custom collection.
-var getProcessResponse = PShell.GetProcess("svchost", "w3wp").WhereObject(c => c.StartTime > DateTime.Now.AddDays(-7) && c.StartTime < DateTime.Now.AddDays(-1)).SelectObject(x => new { x.Name, x.Id, x.StartTime, x.PM, x.WS, x.VM, x.CPU, x.Handles }).ConvertToJson();            
-// Get Command
-string command = getProcessResponse.GetCommand();
-```
-
-Run command
-
-```csharp
-// Get-Process
-ActionResult<GetProcessResponse> resultGetProcess = getProcessResponse.Execute();
-
-if (resultGetProcess.IB_Exception)
-    System.Console.WriteLine("Error: {0}",resultGetProcess.Message);            
-else 
-{
-    foreach (var process in resultGetProcess.List)
-    {
-        System.Console.WriteLine("ID: {0}, Name: {1}, StartTime: {2}, CPU: {3}", process.Id, process.Name, process.StartTime.ToString(PShellSettings.DateFormat), process.CPU);
-    }
-}
-```
-
-Stop Process (-Force) by date range
-
-```csharp
-// Parameters
-DateTime[] dateTimes = new DateTime[] { DateTime.Now.AddDays(-7), DateTime.Now.AddDays(-1) };
-
-// Stop Process (-Force) by date range.
-var stopProcessResponse = PShell.GetProcess("w3wp").WhereObject(c => c.StartTime > dateTimes[0] && c.StartTime < dateTimes[1]).StopProcessForce();
-
-// Get Command
-string command = stopProcessResponse.GetCommand();
-
-// Execute command
-ActionResult<GetProcessResponse> resultStopProcess = stopProcessResponse.Execute();
-
-if (resultStopProcess.IB_Exception)
-    System.Console.WriteLine("Error: {0}", resultStopProcess.Message);
-else
-{
-    System.Console.WriteLine("Successful process");
-}
-
-```
