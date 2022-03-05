@@ -13,7 +13,7 @@
 
 ## What is Vaetech.Collections.Generic?
 
-Vaetech.Collections.Generic is a C# library which may be used for ... 
+Vaetech.Collections.Generic is a C# library that can be used to create custom collections and convert them to ArrayList<Key,Value>. It is an alternative to the data dictionary, with the option to add multiple values and receive notifications when the data source changes.
 
 ## License Information
 
