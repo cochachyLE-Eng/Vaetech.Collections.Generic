@@ -8,7 +8,7 @@
 
 |   Platform   |Build Status|
 |:-------------|:----------:|
-|**Windows**  |[![Build status](https://ci.appveyor.com/api/projects/status/19qpx965dh2s3lp1?svg=true)](https://ci.appveyor.com/project/cochachyLE-Eng/vaetech-powershell)|
+|**Windows**  |[![Build status](https://ci.appveyor.com/api/projects/status/19qpx965dh2s3lp1?svg=true)](https://ci.appveyor.com/project/cochachyLE-Eng/vaetech-powershell) [![Join the chat at https://gitter.im/Vaetech-Collections-Generic/community](https://badges.gitter.im/Vaetech-Collections-Generic/community.svg)](https://gitter.im/Vaetech-Collections-Generic/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|
 
 ## What is Vaetech.Collections.Generic?
 
