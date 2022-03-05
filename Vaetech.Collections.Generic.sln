@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaetech.Collections.Generic", "Vaetech.Collections.Generic\Vaetech.Collections.Generic.csproj", "{0AC7A672-685B-4FAE-A33D-C61E12D6E632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaetech.Collections.Generic.NUnit", "Vaetech.Collections.Generic.NUnit\Vaetech.Collections.Generic.NUnit.csproj", "{9A6E7D9C-575A-4117-94A5-94863239A022}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AC7A672-685B-4FAE-A33D-C61E12D6E632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC7A672-685B-4FAE-A33D-C61E12D6E632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC7A672-685B-4FAE-A33D-C61E12D6E632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC7A672-685B-4FAE-A33D-C61E12D6E632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A6E7D9C-575A-4117-94A5-94863239A022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6E7D9C-575A-4117-94A5-94863239A022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A6E7D9C-575A-4117-94A5-94863239A022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A6E7D9C-575A-4117-94A5-94863239A022}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {924DA274-66DD-442C-BBE2-2640E9B8EBFF}
+	EndGlobalSection
+EndGlobal
