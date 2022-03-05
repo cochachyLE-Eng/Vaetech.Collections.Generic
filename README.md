@@ -85,6 +85,9 @@ Visual Studio 2015 will require modifications to the projects in order to build 
 It only takes a few lines of code to convert collections to ArrayList<TKey,TValue>.
 
 ```csharp
+//References
+using Vaetech.Collections.Generic.Extensions;
+
 // Parameters
 Request request = new Request();
 request.AddParameter("key", "key...");
