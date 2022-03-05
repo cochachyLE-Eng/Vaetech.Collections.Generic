@@ -1,6 +1,6 @@
 ﻿﻿# Vaetech.Collections.Generic
 
-[![Join the chat at (https://badges.gitter.im/Vaetech-Collections-Generic)](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im//Vaetech-Collections-Generic/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Join the chat at (https://badges.gitter.im/Vaetech-Collections-Generic)](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Vaetech-Collections-Generic/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 |    Package    |Latest Release|
 |:--------------|:------------:|
