@@ -8,13 +8,6 @@
             Key = key;
             Value1 = value1;
         }
-        public Array(long index, TKey key, TValue1 value1)
-        {
-            Index = index;
-            Key = key;
-            Value1 = value1;
-        }
-        public long Index { get; private set; } = 0;
         public TKey Key { get; set; }
         public TValue1 Value1 { get; set; }
     }

@@ -13,7 +13,7 @@
 
 ## What is Vaetech.Collections.Generic?
 
-Vaetech.Collections.Generic is a C# library that can be used to create custom collections and convert them to ArrayList<Key,Value>. It is an alternative to the data dictionary, with the option to add multiple values and receive notifications when the data source changes.
+Vaetech.Collections.Generic is a C# library that can be used to create custom collections and convert them to `ArrayList<Key,Value>` collection or `Parameters` Collection. It is an alternative to the data dictionary, with the option to add multiple values and receive notifications when the data source changes.
 
 ## License Information
 
@@ -82,42 +82,45 @@ Visual Studio 2015 will require modifications to the projects in order to build 
 
 ### How can it be used?
 
-It only takes a few lines of code to convert collections to ArrayList<TKey,TValue>.
+It only takes a few lines of code to convert collections to `ArrayList<Key,Value>` collection or `Parameters` Collection.
 
 ```csharp
-// Paramters
-Request request = new Request();
-request.AddParameter("key", "key...");
-request.AddParameter("x-amz-credential", "x-amz-credential...");
-request.AddParameter("x-amz-algorithm", "x-amz-algorithm...");
-request.AddParameter("x-amz-date", "x-amz-date...");
-request.AddParameter("x-amz-signature", "x-amz-signature...");
-request.AddParameter("policy", "policy...");
-request.AddParameter("acl", "acl...");
-request.AddParameter("Content-Type", "Content-Type...");
-request.AddParameter("success_action_status", "success_action_status...");
+// Parameters Test
+Parameters parameters = new Parameters();
+parameters.Add("key", "key...");
+parameters.Add("x-amz-credential", "x-amz-credential...");
+parameters.Add("x-amz-algorithm", "x-amz-algorithm...");
+parameters.Add("x-amz-date", "x-amz-date...");
+parameters.Add("x-amz-signature", "x-amz-signature...");
+parameters.Add("policy", "policy...");
+parameters.Add("acl", "acl...");
+parameters.Add("Content-Type", "Content-Type...");
+parameters.Add("success_action_status", "success_action_status...");           
 
-// Convert List<Parameter> to ArrayList<TKey,TValue>.
-var result = request.Parameters.ToArrayList(k => k.Name, v => v.Value);
+// Convert List<Parameter> to ArrayList<TKey,TValue>. (sample 1)
+var result = parameters.ToArrayList(k => k.Name, v => v.Value.ToString());
 
-var key = result["key"].Value1;
-var x_amz_credential = result["x-amz-credential"].Value1;
-var x_amz_algorithm = result["x-amz-algorithm"].Value1;
-var x_amz_date = result["x-amz-date"].Value1;
-var x_amz_signature = result["x-amz-signature"].Value1;
-var policy = result["policy"].Value1;
-var acl = result["acl"].Value1;
-var content_Type = result["Content-Type"].Value1;
-var success_action_status = result["success_action_status"].Value1;
+// Convert List<Parameter> to ArrayList<TKey,TValue1,TValue2>. (sample 2).
+var result2 = parameters.ToArrayList(k => k.Name, v1 => v1.Value, v2 => v2.DbType);
 
-Assert.AreEqual(key, request.Parameters.Where(c => c.Name == "key").FirstOrDefault().Value);
-Assert.AreEqual(x_amz_credential, request.Parameters.Where(c => c.Name == "x-amz-credential").FirstOrDefault().Value);
-Assert.AreEqual(x_amz_algorithm, request.Parameters.Where(c => c.Name == "x-amz-algorithm").FirstOrDefault().Value);
-Assert.AreEqual(x_amz_date, request.Parameters.Where(c => c.Name == "x-amz-date").FirstOrDefault().Value);
-Assert.AreEqual(x_amz_signature, request.Parameters.Where(c => c.Name == "x-amz-signature").FirstOrDefault().Value);
-Assert.AreEqual(policy, request.Parameters.Where(c => c.Name == "policy").FirstOrDefault().Value);
-Assert.AreEqual(acl, request.Parameters.Where(c => c.Name == "acl").FirstOrDefault().Value);
-Assert.AreEqual(content_Type, request.Parameters.Where(c => c.Name == "Content-Type").FirstOrDefault().Value);
-Assert.AreEqual(success_action_status, request.Parameters.Where(c => c.Name == "success_action_status").FirstOrDefault().Value);
+string key = result["key"];
+string x_amz_credential = result["x-amz-credential"];
+string x_amz_algorithm = result["x-amz-algorithm"];
+string x_amz_date = result["x-amz-date"];
+string x_amz_signature = result["x-amz-signature"];
+string policy = result["policy"];
+string acl = result[key: "acl"];
+string content_Type = result[key: "Content-Type"];
+string success_action_status = result[key: "success_action_status"];
+
+Assert.AreEqual(key, parameters.Where(c => c.Name == "key").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_credential, parameters.Where(c => c.Name == "x-amz-credential").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_algorithm, parameters.Where(c => c.Name == "x-amz-algorithm").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_date, parameters.Where(c => c.Name == "x-amz-date").FirstOrDefault().Value);
+Assert.AreEqual(x_amz_signature, parameters.Where(c => c.Name == "x-amz-signature").FirstOrDefault().Value);
+Assert.AreEqual(policy, parameters.Where(c => c.Name == "policy").FirstOrDefault().Value);
+Assert.AreEqual(acl, parameters.Where(c => c.Name == "acl").FirstOrDefault().Value);
+Assert.AreEqual(content_Type, parameters.Where(c => c.Name == "Content-Type").FirstOrDefault().Value);
+Assert.AreEqual(success_action_status, parameters.Where(c => c.Name == "success_action_status").FirstOrDefault().Value);
 ```
 

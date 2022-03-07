@@ -34,13 +34,23 @@ namespace Vaetech.Collections.Generic
             get => arrays[index];
             set => arrays[index] = value;
         }
-        public virtual Array<TKey, TValue1> this[TKey key] => this.SingleOrDefault(p => p.Key.Equals(key));
-        public virtual Array<TKey, TValue1> this[long index] => this.SingleOrDefault(p => p.Index.Equals(index));
+        public virtual TValue1 this[TKey key]
+        {
+            get => this.SingleOrDefault(p => p.Key.Equals(key)).Value1;
+            set 
+            {
+                if (arrays.Exists(p => p.Key.Equals(key)))
+                    this.Single(p => p.Key.Equals(key)).Value1 = value;
+                else
+                    this.Add(new Array<TKey, TValue1>(key,value));
+            }
+        }        
         public virtual IEnumerable<TKey> Identifiers => this.arrays.Select(p => p.Key);
         #endregion
 
         #region Methods
         private Range GetRangeAdd(int count) => new Range(position: this.arrays.Any() ? this.Count - 1 : 0, count);
+        public virtual void Add(TKey key, TValue1 value1) => this.Add(new Array<TKey,TValue1>(key,value1));
         public virtual void Add(Array<TKey, TValue1> item) 
         {
             Range range = GetRangeAdd(1);
