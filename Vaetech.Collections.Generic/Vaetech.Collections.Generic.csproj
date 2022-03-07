@@ -4,12 +4,13 @@
 	  <TargetFrameworks>netStandard2.1;net45;net461;net48</TargetFrameworks>
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	  <Version>1.0.1</Version>
+	  <Version>1.0.2</Version>
 	  <Authors>Luis Eduardo Cochachi Chamorro</Authors>
 	  <Company>LIIKSOFT</Company>
-	  <Description>Convert Object List to ArrayList&lt;TKey,TValue(k =&gt; k.Name, v =&gt; v.Value) for NetFramework and NetCore.
+	  <Description>Convierta la lista de objetos en la colección ArrayList y la colección de parámetros para Net Framework y Net Core.
 
-ArrayList&lt;TKey,TValue1&gt;, ArrayList&lt;TKey,TValue1,...,TValue7&gt;</Description>
+1. ArrayList&lt;TKey,TValue&gt;(k =&gt; k.Name, v =&gt; v.Value).
+2. Parameters (string name, object valuel, DbType? dbTypel, ...)</Description>
 	  <PackageLicenseExpression>MIT OR Apache-2.0</PackageLicenseExpression>
 	  <PackageProjectUrl>https://github.com/cochachyLE-Eng/Vaetech.Collections.Generic</PackageProjectUrl>
 	  <PackageIcon>package.png</PackageIcon>
