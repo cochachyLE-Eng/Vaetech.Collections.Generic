@@ -65,7 +65,27 @@ namespace Vaetech.Collections.Generic
             Range range = GetRangeAdd(1);
             this.arrays.Add(item);            
             OnDataSourceChanged(item, this.Count, range, ArrayListMethodType.Add);
-        }        
+        }
+        public virtual void AddOrReplace(TKey key, TValue1 value1, TValue2 value2, TValue3 value3, TValue4 value4, TValue5 value5, TValue6 value6, TValue7 value7)
+            => this.AddOrReplace(new Array<TKey, TValue1, TValue2, TValue3, TValue4, TValue5, TValue6, TValue7>(key, value1, value2, value3, value4, value5, value6, value7));
+        public virtual void AddOrReplace(Array<TKey, TValue1, TValue2, TValue3, TValue4, TValue5, TValue6, TValue7> item)
+        {
+            Range range = GetRangeAdd(1);
+            if (!this.arrays.Exists(c => c.Key.Equals(item.Key)))
+                this.arrays.Add(item);
+            else
+            {
+                var itemsingle = this.arrays.Single(c => c.Key.Equals(item.Key));
+                itemsingle.Value1 = item.Value1;
+                itemsingle.Value2 = item.Value2;
+                itemsingle.Value3 = item.Value3;
+                itemsingle.Value4 = item.Value4;
+                itemsingle.Value5 = item.Value5;
+                itemsingle.Value6 = item.Value6;
+                itemsingle.Value7 = item.Value7;
+            }
+            OnDataSourceChanged(item, this.Count, range, ArrayListMethodType.Add);
+        }
         public virtual void Clear()
         {
             Range range = new Range(0, this.Count);

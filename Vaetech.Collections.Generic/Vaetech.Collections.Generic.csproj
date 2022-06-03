@@ -4,10 +4,10 @@
 	  <TargetFrameworks>netStandard2.1;net45;net461;net48</TargetFrameworks>
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	  <Version>1.0.2</Version>
+	  <Version>1.0.4</Version>
 	  <Authors>Luis Eduardo Cochachi Chamorro</Authors>
 	  <Company>LIIKSOFT</Company>
-	  <Description>Convierta la lista de objetos en la colección ArrayList y la colección de parámetros para Net Framework y Net Core.
+	  <Description>Convert the list of objects to the ArrayList collection and the Parameters collection for Net Framework and Net Core.
 
 1. ArrayList&lt;TKey,TValue&gt;(k =&gt; k.Name, v =&gt; v.Value).
 2. Parameters (string name, object valuel, DbType? dbTypel, ...)</Description>
@@ -24,6 +24,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
 </Project>
