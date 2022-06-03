@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaetech.Collections.Generic", "Vaetech.Collections.Generic\Vaetech.Collections.Generic.csproj", "{0AC7A672-685B-4FAE-A33D-C61E12D6E632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vaetech.Collections.Generic", "Vaetech.Collections.Generic\Vaetech.Collections.Generic.csproj", "{0AC7A672-685B-4FAE-A33D-C61E12D6E632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaetech.Collections.Generic.NUnit", "Vaetech.Collections.Generic.NUnit\Vaetech.Collections.Generic.NUnit.csproj", "{9A6E7D9C-575A-4117-94A5-94863239A022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vaetech.Collections.Generic.NUnit", "Vaetech.Collections.Generic.NUnit\Vaetech.Collections.Generic.NUnit.csproj", "{9A6E7D9C-575A-4117-94A5-94863239A022}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9C058EC-C619-4324-A0C9-F70C292CE90B}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		appveyor2.yml = appveyor2.yml
+		build.ps1 = build.ps1
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
